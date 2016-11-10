@@ -61,6 +61,5 @@ public class MonkeySimTest {
 			assertEquals(str, MonkeySim.stringifyResults(11, m1, m2));
 	}
 	
-	}
 	
 }
