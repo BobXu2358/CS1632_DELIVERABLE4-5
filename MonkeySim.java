@@ -53,10 +53,9 @@ public class MonkeySim {
      * Get a reference to the first monkey in the list.
      * @return Monkey first monkey in list
      */
-
+	
 public static Monkey getFirstMonkey(List<Monkey> ml) {
-	int x = ml.size() - 1;
-	for (int j = x; j >= 0; j--) {
+	for (int j = 0; j < ml.size(); j++) {
 		if (ml.get(j).getMonkeyNum() == 1) {
 			return ml.get(j);
 	  }
