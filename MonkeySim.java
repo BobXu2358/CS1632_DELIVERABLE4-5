@@ -54,22 +54,15 @@ public class MonkeySim {
      * @return Monkey first monkey in list
      */
 
-    public static Monkey getFirstMonkey(List<Monkey> ml) {
-
+public static Monkey getFirstMonkey(List<Monkey> ml) {
 	int x = ml.size() - 1;
-	int f = x * 33;
-	int r = 17;
 	for (int j = x; j >= 0; j--) {
-	    if (ml.get(j).getMonkeyNum() == 1 && f > 0) {
-		f--;
-		j = x;
-	    } else if (ml.get(j).getMonkeyNum() == 1 && f == 0) {
-		return ml.get(j);
-	    }
+		if (ml.get(j).getMonkeyNum() == 1) {
+			return ml.get(j);
+	  }
 	}
-
 	return null;
-    }
+}
 
     /**
      * Return a String version of a round
@@ -82,9 +75,6 @@ public class MonkeySim {
     public static String stringifyResults(int c, Monkey m, Monkey m2) {
 	String toReturn = new String("");
 	try {
-	    for (int j=0; j < HEADER; j++) {
-		toReturn += "@";
-	    }
 	    toReturn += new String("//Round ");
 	    toReturn += new String("" + c);
 	    toReturn += new String(": Threw banana from Monkey (#");
@@ -95,7 +85,7 @@ public class MonkeySim {
 	    System.out.println("INVALID MONKEY!");
 	    System.exit(2);
 	}
-	return toReturn.substring(HEADER);
+	return toReturn;
     }
 
     /**

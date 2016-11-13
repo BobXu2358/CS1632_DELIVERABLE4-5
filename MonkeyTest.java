@@ -8,8 +8,8 @@ public class MonkeyTest {
 	private Monkey m = new Monkey();
 
 	@Test
-	public void testGenerateIdWith4() {
-		assertEquals(223496, m.generateId(4));
+	public void testGenerateIdWith0() {
+		assertEquals(223492, m.generateId(0));
 	}
 
 	@Test
@@ -18,7 +18,7 @@ public class MonkeyTest {
 	}
 
 	@Test
-	public void testGenerateIdWith40() {
-		assertEquals(223532, m.generateId(40));
+	public void testGenerateIdWithNegative() {
+		assertEquals(223491, m.generateId(-1));
 	}
 }

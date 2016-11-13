@@ -87,6 +87,12 @@ public class MonkeySimTest {
 	}
 
 	@Test
+	public void testGetFirstMonkeyWithEmptyList() {
+		List<Monkey> ml = new LinkedList<Monkey>();
+		assertNull(MonkeySim.getFirstMonkey(ml));
+	}
+
+	@Test
 	public void testGetFirstMonkeyWithoutFirstMonkey() {
 		List<Monkey> ml = new LinkedList<Monkey>();
 		Monkey m1 = Mockito.mock(Monkey.class);
