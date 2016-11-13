@@ -55,8 +55,7 @@ public class MonkeySim {
      */
 
 public static Monkey getFirstMonkey(List<Monkey> ml) {
-	int x = ml.size() - 1;
-	for (int j = x; j >= 0; j--) {
+	for (int j = 0; j < ml.size(); j++) {
 		if (ml.get(j).getMonkeyNum() == 1) {
 			return ml.get(j);
 	  }
