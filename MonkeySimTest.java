@@ -58,13 +58,15 @@ public class MonkeySimTest {
 		Monkey m1 = Mockito.mock(Monkey.class);
 		Monkey m2 = Mockito.mock(Monkey.class);
 		Monkey m3 = Mockito.mock(Monkey.class);
+		Monkey m4 = Mockito.mock(Monkey.class);
 		Mockito.when(m1.getMonkeyNum()).thenReturn(1);
 		Mockito.when(m2.getMonkeyNum()).thenReturn(2);
 		Mockito.when(m3.getMonkeyNum()).thenReturn(3);
+		Mockito.when(m4.getMonkeyNum()).thenReturn(4);
 		ml.add(m1);
 		ml.add(m2);
 		ml.add(m3);
-		assertEquals(m1, MonkeySim.getFirstMonkey(ml));
+		assertEquals(1, MonkeySim.getFirstMonkey(ml).getMonkeyNum());
 	}
 
 	@Test
@@ -73,27 +75,32 @@ public class MonkeySimTest {
 		Monkey m1 = Mockito.mock(Monkey.class);
 		Monkey m2 = Mockito.mock(Monkey.class);
 		Monkey m3 = Mockito.mock(Monkey.class);
+		Monkey m4 = Mockito.mock(Monkey.class);
 		Mockito.when(m1.getMonkeyNum()).thenReturn(2);
 		Mockito.when(m2.getMonkeyNum()).thenReturn(1);
-		Mockito.when(m3.getMonkeyNum()).thenReturn(3);
+		Mockito.when(m3.getMonkeyNum()).thenReturn(4);
+		Mockito.when(m4.getMonkeyNum()).thenReturn(3);
 		ml.add(m1);
 		ml.add(m2);
 		ml.add(m3);
-		assertEquals(m1, MonkeySim.getFirstMonkey(ml));
+		assertEquals(1, MonkeySim.getFirstMonkey(ml).getMonkeyNum());
 	}
 
 	@Test
-	public void testGetFirstMonkey3() {
+	public void testGetFirstMonkeyWithoutFirstMonkey() {
 		List<Monkey> ml = new LinkedList<Monkey>();
 		Monkey m1 = Mockito.mock(Monkey.class);
 		Monkey m2 = Mockito.mock(Monkey.class);
 		Monkey m3 = Mockito.mock(Monkey.class);
-		Mockito.when(m1.getMonkeyNum()).thenReturn(2);
-		Mockito.when(m2.getMonkeyNum()).thenReturn(3);
-		Mockito.when(m3.getMonkeyNum()).thenReturn(1);
+		Monkey m4 = Mockito.mock(Monkey.class);
+		Mockito.when(m1.getMonkeyNum()).thenReturn(3);
+		Mockito.when(m2.getMonkeyNum()).thenReturn(4);
+		Mockito.when(m3.getMonkeyNum()).thenReturn(5);
+		Mockito.when(m4.getMonkeyNum()).thenReturn(2);
 		ml.add(m1);
 		ml.add(m2);
 		ml.add(m3);
-		assertEquals(m3, MonkeySim.getFirstMonkey(ml));
+		ml.add(m4);
+		assertNull(MonkeySim.getFirstMonkey(ml));
 	}
 }
