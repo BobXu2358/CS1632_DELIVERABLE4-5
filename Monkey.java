@@ -46,6 +46,29 @@ public class Monkey {
     }
 
     /**
+     * Return which monkey should get banana next for 2nd iteration.
+     * @return int which monkey should get banana.
+     */
+
+    public int nextMonkeySecond() {
+      boolean prime = true;
+      for(int i = _thisMonkeyNum-1; i > 0; i--) {
+        for(int j = 2; j < i; j++){
+          if(i % j == 0){
+            prime = false;
+          }
+        }
+        if(prime){
+          return i;
+        }
+        else{
+          prime = true;
+        }
+      }
+      return 1;
+    }
+
+    /**
      * Checks to see if this monkey has a banana
      * @return true if has banana, false otherwise
      */

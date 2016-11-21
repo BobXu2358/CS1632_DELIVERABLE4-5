@@ -118,12 +118,17 @@ public static Monkey getFirstMonkey(List<Monkey> ml) {
 	return ml.size();
     }
 
-    public static int nextMonkeyAndResize(Monkey m, List<Monkey> ml) {
-	int n = m.nextMonkey();
+    public static int nextMonkeyAndResize(Monkey m, List<Monkey> ml, int time) {
+    	int n;
+    	if(time == 1){
+    		n = m.nextMonkey();
+    	}
+    	else{
+    		n = m.nextMonkeySecond();
+    	}
 	if (n > ml.size()) {
 	    int zarg = addMoreMonkeys(n, ml);
 	}
-
 	return n;
     }
 
@@ -134,13 +139,13 @@ public static Monkey getFirstMonkey(List<Monkey> ml) {
      * @return int number of rounds taken to get to first monkey
      */
 
-    public static int runSimulation(List<Monkey> ml, MonkeyWatcher mw) {
+    public static int runSimulation(List<Monkey> ml, MonkeyWatcher mw, int time) {
 	int nextMonkey = -1;
 
 	while (!getFirstMonkey(ml).hasBanana()) {
 	    mw.incrementRounds();
 	    Monkey m = ml.get(monkeyWithBanana(ml));
-	    int n = nextMonkeyAndResize(m, ml);
+	    int n = nextMonkeyAndResize(m, ml, time);
 	    Monkey m2 = ml.get(n);
 	    Banana b = m.throwBananaFrom();
 	    m2.throwBananaTo(b);
@@ -171,7 +176,15 @@ public static Monkey getFirstMonkey(List<Monkey> ml) {
 	}
 	_monkeyList.get(s).throwBananaTo(b);
 
-	int numRounds = runSimulation(_monkeyList, mw);
+	int numRounds = runSimulation(_monkeyList, mw, 1);
 	System.out.println("Completed in " + numRounds + " rounds.");
+
+	System.out.println("\nStarting again... \n");
+	getFirstMonkey(_monkeyList).throwBananaFrom();
+	_monkeyList.get(s).throwBananaTo(b);
+	MonkeyWatcher mw1 = new MonkeyWatcher();
+	numRounds = runSimulation(_monkeyList, mw1, 2);
+	System.out.println("Completed in " + numRounds + " rounds.");
+
     }
 }
