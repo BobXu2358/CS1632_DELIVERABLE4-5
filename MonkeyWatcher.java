@@ -8,7 +8,7 @@ public class MonkeyWatcher {
    */
 
   public int getRounds() {
-		return numRounds;
+    return numRounds;
   }
 
   /**
@@ -16,7 +16,7 @@ public class MonkeyWatcher {
    */
 
   public void incrementRounds() {
-		numRounds++;
+    numRounds++;
   }
 
 }
