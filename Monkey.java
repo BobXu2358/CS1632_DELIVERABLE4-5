@@ -1,22 +1,18 @@
-import java.util.*;
 
 public class Monkey {
 
-    private static int _monkeyNum = 0;
-
-    private int _thisMonkeyNum = 0;
-
-    private int _id = -1;
-
-    private Banana _b = null;
+    private static int monkeyNum = 0;
+    private int thisMonkeyNum = 0;
+    private int id = -1;
+    private Banana pb = null;
 
     /**
-     * Get this monkey's number
+     * Get this monkey's number.
      * @return int monkey number
      */
 
     public int getMonkeyNum() {
-    return _thisMonkeyNum;
+      return thisMonkeyNum;
     }
 
     /**
@@ -25,11 +21,11 @@ public class Monkey {
      */
 
     public int getId() throws NoIdException {
-    if (_id < 0) {
+      if (id < 0) {
         throw new NoIdException();
-    } else {
-        return _id;
-    }
+      } else {
+        return id;
+      }
     }
 
     /**
@@ -38,11 +34,11 @@ public class Monkey {
      */
 
     public int nextMonkey() {
-    if (_thisMonkeyNum % 2 == 0) {
-        return _thisMonkeyNum / 2;
-    } else {
-        return (_thisMonkeyNum * 3) + 1;
-    }
+      if (thisMonkeyNum % 2 == 0) {
+        return thisMonkeyNum / 2;
+      } else {
+        return (thisMonkeyNum * 3) + 1;
+      }
     }
 
     /**
@@ -52,16 +48,15 @@ public class Monkey {
 
     public int nextMonkeySecond() {
       boolean prime = true;
-      for(int i = _thisMonkeyNum-1; i > 0; i--) {
-        for(int j = 2; j < i; j++){
-          if(i % j == 0){
+      for (int i = thisMonkeyNum - 1; i > 0; i--) {
+        for (int j = 2; j < i; j++) {
+          if (i % j == 0) {
             prime = false;
           }
         }
-        if(prime){
+        if (prime) {
           return i;
-        }
-        else{
+        } else {
           prime = true;
         }
       }
@@ -69,32 +64,32 @@ public class Monkey {
     }
 
     /**
-     * Checks to see if this monkey has a banana
+     * Checks to see if this monkey has a banana.
      * @return true if has banana, false otherwise
      */
 
     public boolean hasBanana() {
-    return _b != null;
+      return pb != null;
     }
 
     /**
-     * Receive a banana from another monkey
-     * @param b - Banana given to this monkey
+     * Receive a banana from another monkey.
+     * @param ban - Banana given to this monkey
      */
 
-    public void throwBananaTo(Banana b) {
-    _b = b;
+    public void throwBananaTo(Banana ban) {
+      pb = ban;
     }
 
     /**
      *
-     * @return Banana - the banana this monkey held
+     * @return Banana - the banana this monkey held.
      */
 
     public Banana throwBananaFrom() {
-    Banana toReturn = _b;
-    _b = null;
-    return toReturn;
+      Banana toReturn = pb;
+      pb = null;
+      return toReturn;
     }
 
     /**
@@ -103,22 +98,22 @@ public class Monkey {
      * always return the correct value for
      * a given n (i.e., the id for the first
      * monkey should always be the same).
-     * @param int n - monkey number
+     * @param num - monkey number
      * @return int - id for this monkey
      */
 
-    public int generateId(int n) {
-       return 223492 + n;
+    public int generateId(int num) {
+      return 223492 + num;
     }
 
     /**
-     * Monkey constructor
+     * Monkey constructor.
      */
 
     public Monkey() {
-    _thisMonkeyNum = _monkeyNum;
-    _monkeyNum++;
-    _id = generateId(_thisMonkeyNum);
+      thisMonkeyNum = monkeyNum;
+      monkeyNum++;
+      id = generateId(thisMonkeyNum);
     }
 
 }
