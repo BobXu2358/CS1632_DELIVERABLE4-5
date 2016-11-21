@@ -3,8 +3,7 @@ import java.util.List;
 
 public class MonkeySim {
 
-  private static List<Monkey> _monkeyList = new LinkedList<Monkey>();
-  public static final int HEADER = 50000;
+  private static List<Monkey> monkeyList = new LinkedList<Monkey>();
 
   /**
    * Print out use message and exit with
@@ -66,17 +65,12 @@ public class MonkeySim {
    */
 
   public static String stringifyResults(int count, Monkey m1, Monkey m2) {
-    String toReturn = new String("");
+    String toReturn = null;
     try {
-      toReturn += new String("//Round ");
-      toReturn += new String("" + count);
-      toReturn += new String(": Threw banana from Monkey (#");
-      toReturn += new String(m1.getMonkeyNum() + " / ID " + m1.getId());
-      toReturn += new String(") to Monkey (#");
-      toReturn += new String(m2.getMonkeyNum() + " / ID " + m2.getId() + ")");
+      toReturn = "//Round " + count + ": Threw banana from Monkey (#" + m1.getMonkeyNum()
+      + " / ID " + m1.getId() + ") to Monkey (#" + m2.getMonkeyNum() + " / ID " + m2.getId() + ")";
     } catch (NoIdException noindex) {
         System.out.println("INVALID MONKEY!");
-        System.exit(2);
     }
     return toReturn;
   }
@@ -106,7 +100,7 @@ public class MonkeySim {
 
   public static int addMoreMonkeys(int num, List<Monkey> ml) {
     while (ml.size() <= num) {
-        ml.add(new Monkey());
+      ml.add(new Monkey(ml.size()));
     }
     return ml.size();
   }
@@ -169,20 +163,20 @@ public class MonkeySim {
     MonkeyWatcher mw = new MonkeyWatcher();
 
     for (int j = 0; j < startNum + 1; j++) {
-        tmpMonkey = new Monkey();
-        _monkeyList.add(tmpMonkey);
+      tmpMonkey = new Monkey(monkeyList.size());
+      monkeyList.add(tmpMonkey);
     }
 
-    _monkeyList.get(startNum).throwBananaTo(banana);
+    monkeyList.get(startNum).throwBananaTo(banana);
 
-    int numRounds = runSimulation(_monkeyList, mw, 1);
+    int numRounds = runSimulation(monkeyList, mw, 1);
     System.out.println("Completed in " + numRounds + " rounds.");
 
     System.out.println("\nStarting again... \n");
-    getFirstMonkey(_monkeyList).throwBananaFrom();
-    _monkeyList.get(startNum).throwBananaTo(banana);
+    getFirstMonkey(monkeyList).throwBananaFrom();
+    monkeyList.get(startNum).throwBananaTo(banana);
     MonkeyWatcher mw1 = new MonkeyWatcher();
-    numRounds = runSimulation(_monkeyList, mw1, 2);
+    numRounds = runSimulation(monkeyList, mw1, 2);
     System.out.println("Completed in " + numRounds + " rounds.");
   }
 }

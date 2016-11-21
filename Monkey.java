@@ -1,7 +1,6 @@
 
 public class Monkey {
 
-    private static int monkeyNum = 0;
     private int thisMonkeyNum = 0;
     private int id = -1;
     private Banana pb = null;
@@ -108,11 +107,11 @@ public class Monkey {
 
     /**
      * Monkey constructor.
+     * @param num new id for monkey
      */
 
-    public Monkey() {
-      thisMonkeyNum = monkeyNum;
-      monkeyNum++;
+    public Monkey(int num) {
+      thisMonkeyNum = num;
       id = generateId(thisMonkeyNum);
     }
 
