@@ -78,17 +78,4 @@ public class MonkeyTest {
 		Monkey m = new Monkey(1);
 		assertEquals(1, m.nextMonkeySecond());
 	}
-
-	//unit test for new method nextMonkeySecond()
-	//in second round, monkey #5 shuold pass banana to monkey #3
-	//therefore, int 3 is expected
-	@Test
-	public void testNextMonkeySecondWithMonkeyNum0() {
-		Monkey[] monkeyArr = new Monkey[5];
-		for(int i = 0; i < 5; i++) {
-			monkeyArr[i] = new Monkey(i);
-		}
-		assertEquals(1, monkeyArr[0].nextMonkeySecond());
-	}
-
 }
