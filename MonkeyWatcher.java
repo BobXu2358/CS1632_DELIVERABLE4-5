@@ -15,8 +15,8 @@ public class MonkeyWatcher {
    * Increment number of rounds.
    */
 
-  public void incrementRounds() {
-    numRounds++;
+  public int incrementRounds() {
+    return numRounds++;
   }
 
 }
